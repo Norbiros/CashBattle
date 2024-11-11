@@ -14,6 +14,6 @@ A simple implementation of the Polish TV show [Awantura o kasę (Cash Battle)](h
    pnpm install
    pnpm dev
    ```
-2. Display `localhost:3000/display` on the screen for the audience.
+2. Display `localhost:3000/points` on the screen for the audience.
 3. Open `localhost:3000` in the browser.
 4. Have fun playing the game!

@@ -5,8 +5,17 @@
 
 	let timerInterval: number | undefined = undefined;
 
+	function fixNumbers() {
+		$points.team_one_points = parseInt($points.team_one_points);
+		$points.team_two_points = parseInt($points.team_two_points);
+		$points.team_one_bidding = parseInt($points.team_one_bidding);
+		$points.team_two_bidding = parseInt($points.team_two_bidding);
+		$points.stakes_previous_round = parseInt($points.stakes_previous_round);
+	}
+
 	function updatePoints() {
 		if (browser) {
+			fixNumbers();
 			localStorage.setItem('data', JSON.stringify($points));
 		}
 	}
@@ -77,13 +86,13 @@
 			<input
 				type="number"
 				bind:value={$points.team_one_points}
-				on:input={updatePoints}
+				on:input={() => updatePoints()}
 				class="w-1/2 rounded-md border border-gray-300 p-2"
 			/>
 			<input
 				type="number"
 				bind:value={$points.team_one_bidding}
-				on:input={updatePoints}
+				on:input={() => updatePoints()}
 				class="w-1/2 rounded-md border border-gray-300 p-2"
 			/>
 		</div>
@@ -93,13 +102,13 @@
 			<input
 				type="number"
 				bind:value={$points.team_two_points}
-				on:input={updatePoints}
+				on:input={() => updatePoints()}
 				class="w-1/2 rounded-md border border-gray-300 p-2"
 			/>
 			<input
 				type="number"
 				bind:value={$points.team_two_bidding}
-				on:input={updatePoints}
+				on:input={() => updatePoints()}
 				class="w-1/2 rounded-md border border-gray-300 p-2"
 			/>
 		</div>
@@ -108,7 +117,7 @@
 		<input
 			type="number"
 			bind:value={$points.stakes_previous_round}
-			on:input={updatePoints}
+			on:input={() => updatePoints()}
 			class="w-full rounded-md border border-gray-300 p-2"
 		/>
 
