@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
 	import { points } from "../stores/points";
 	import { browser } from '$app/environment';
 
+	let timerInterval: number | undefined = undefined;
 
 	function updatePoints() {
-		if (browser && $points !== null) {
+		if (browser) {
 			localStorage.setItem("data", JSON.stringify($points));
 		}
 	}
@@ -43,6 +44,29 @@
 		$points.team_two_bidding = 5;
 		updatePoints()
 	}
+
+	function startTimer() {
+		$points.time = 60;
+		updatePoints();
+
+		if (timerInterval) clearInterval(timerInterval);
+
+		timerInterval = setInterval(() => {
+			if ($points.time > 0) {
+				$points.time -= 1;
+				updatePoints();
+			} else {
+				clearInterval(timerInterval);
+			}
+		}, 1000);
+	}
+
+	function clearTimer() {
+		clearInterval(timerInterval);
+		timerInterval = undefined;
+		$points.time = 0;
+		updatePoints();
+	}
 </script>
 
 <div class="p-6 bg-gray-100 max-w-md mx-auto rounded-lg shadow-md">
@@ -73,5 +97,7 @@
 		<button on:click={teamTwoWon} class="w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-600">Drużyna 2 wygrała</button>
 		<button on:click={spin} class="w-full py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">Zakręć</button>
 		<button on:click={newBidding} class="w-full py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600">Nowa obstawianie</button>
+		<button on:click={startTimer} class="w-full py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600">Rozpocznij timer</button>
+		<button on:click={clearTimer} class="w-full py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Wyczyść timer</button>
 	</div>
 </div>

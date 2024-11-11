@@ -80,11 +80,10 @@
 		});
 	});
 
-	let oldSpin = false;
+	let oldSpin = $points.spin;
 
 	$: if ($points.spin !== oldSpin) {
 		oldSpin = $points.spin;
-		console.log($points.spin);
 		spinEl.click();
 	}
 </script>
@@ -121,7 +120,7 @@
         margin: -10%;
         background: #fff;
         color: #fff;
-        box-shadow: 0 0 0 8px currentColor, 0 0px 15px 5px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 0 0 8px currentColor, 0 0 15px 5px rgba(0, 0, 0, 0.6);
         border-radius: 50%;
         transition: 0.1s;
     }

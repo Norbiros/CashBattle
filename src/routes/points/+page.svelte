@@ -10,12 +10,15 @@
 			<h1>powered by CrabCraft</h1>
 		</div>
 		<Wheel />
+		{#if $points.time !== 0}
+			<span>Czas na odpowiedź: <strong class="font-bold">{$points.time}</strong></span>
+		{/if}
 		<table class="min-w-full text-center table-auto border border-gray-700 mt-3">
 			<thead>
 				<tr>
 					<th class="px-4 py-2 text-lg font-semibold border-b border-gray-700"></th>
-					<th class="px-4 py-2 text-lg font-semibold border-b border-gray-700">Drużyna 1</th>
-					<th class="px-4 py-2 text-lg font-semibold border-b border-gray-700">Drużyna 2</th>
+					<th class="px-4 py-2 text-lg font-semibold border-b border-gray-700">Grupa 1</th>
+					<th class="px-4 py-2 text-lg font-semibold border-b border-gray-700">Grupa 2</th>
 				</tr>
 			</thead>
 			<tbody>

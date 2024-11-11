@@ -7,17 +7,21 @@ interface Points {
   team_two_points: number
   team_two_bidding: number
   stakes_previous_round: number
+  time: number
   spin: boolean
 }
 
-export const points = writable<Points>({
+const defaultPoints: string = JSON.stringify({
   team_one_points: 0,
   team_one_bidding: 0,
   team_two_points: 0,
   team_two_bidding: 0,
   stakes_previous_round: 0,
+  time: 0,
   spin: false,
 });
+
+export const points = writable<Points>(browser ? JSON.parse(localStorage.getItem("data") || defaultPoints) : defaultPoints);
 
 if (browser) {
   window.addEventListener("storage", (event) => {
