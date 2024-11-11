@@ -1,26 +1,17 @@
-# CashBattle
+# 💸 CashBattle
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A simple implementation of the Polish TV show [Awantura o kasę (Cash Battle)](https://pl.wikipedia.org/wiki/Awantura_o_kas%C4%99).
 
-## Developing
+## Features
+- Admin panel with options to start counter, add points, etc.
+- Good looking display for the audience
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-pnpm dev
-
-# or start the server and open the app in a new browser tab
-pnpm dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-pnpm build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Usage
+1. Start the app:
+    ```bash
+    pnpm install
+    pnpm dev
+    ```
+2. Display `localhost:3000/display` on the screen for the audience.
+3. Open `localhost:3000` in the browser.
+4. Have fun playing the game!
