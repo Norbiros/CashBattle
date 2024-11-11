@@ -9,7 +9,7 @@
 		{ color: '#0fb', label: 'Postacie' }
 	];
 
-	const rand = (m, M) => Math.random() * (M - m) + m;
+	const rand = (min, max) => Math.random() * (max - min) + min;
 	const tot = sectors.length;
 	const PI = Math.PI;
 	const TAU = 2 * PI;
@@ -25,7 +25,7 @@
 	let dia;
 	let rad;
 
-	const getIndex = () => Math.floor(tot - (ang / TAU) * tot) % tot;
+	const getIndex = () => Math.floor(tot - ((ang - Math.PI/2) / TAU) * tot) % tot;
 
 	function drawSector(sector, i) {
 		const ang = arc * i;
@@ -55,7 +55,7 @@
 	function frame() {
 		if (!angVel) return;
 		angVel *= friction;
-		if (angVel < 0.002) angVel = 0;
+		if (angVel < 0.0005) angVel = 0;
 		ang += angVel;
 		ang %= TAU;
 		rotate();
@@ -135,9 +135,10 @@
 	#spin::after {
 		content: '';
 		position: absolute;
-		top: -17px;
+		right: -22px;
 		border: 10px solid transparent;
 		border-bottom-color: currentColor;
 		border-top: none;
+		transform: rotate(90deg);
 	}
 </style>
