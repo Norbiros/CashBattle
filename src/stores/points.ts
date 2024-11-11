@@ -7,6 +7,7 @@ interface Points {
   team_two_points: number
   team_two_bidding: number
   stakes_previous_round: number
+  spin: boolean
 }
 
 export const points = writable<Points>({
@@ -15,6 +16,7 @@ export const points = writable<Points>({
   team_two_points: 0,
   team_two_bidding: 0,
   stakes_previous_round: 0,
+  spin: false,
 });
 
 if (browser) {

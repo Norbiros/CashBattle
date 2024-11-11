@@ -1,5 +1,6 @@
 <script>
 	import { points } from "../../stores/points"
+	import Wheel from '../../components/Wheel.svelte';
 </script>
 
 <div class="bg-gray-900 flex items-center justify-center min-h-screen">
@@ -8,6 +9,7 @@
 			<h1 class="font-bold text-3xl">Awantura o Kasę</h1>
 			<h1>powered by CrabCraft</h1>
 		</div>
+		<Wheel />
 		<table class="min-w-full text-center table-auto border border-gray-700">
 			<thead>
 				<tr>

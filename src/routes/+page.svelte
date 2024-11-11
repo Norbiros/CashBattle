@@ -33,6 +33,10 @@
 		$points.team_two_points += $points.stakes_previous_round;
 		$points.stakes_previous_round = 0;  // Reset
 	}
+
+	function spin() {
+		$points.spin = !$points.spin;
+	}
 </script>
 
 <style>
@@ -55,5 +59,6 @@ Z poprzedniej rundy
 <button on:click={lose}>Źle odpowiedzieli</button>
 <button on:click={teamOneWon}>Drużyna 1 wygrała</button>
 <button on:click={teamTwoWon}>Drużyna 2 wygrała</button>
+<button on:click={spin}>Łiii</button>
 
 Pula <p>{($points.stakes_previous_round + $points.team_one_bidding + $points.team_two_bidding) * 100}</p>
