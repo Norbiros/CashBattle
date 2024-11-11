@@ -56,7 +56,7 @@
 	}
 
 	function startTimer() {
-		$points.time = 60;
+		$points.time = 30;
 		updatePoints();
 
 		if (timerInterval) clearInterval(timerInterval);
