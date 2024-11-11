@@ -1,12 +1,15 @@
 <script lang="ts">
-	import { points } from "../stores/points";
+	import { points } from '../stores/points';
 	import { browser } from '$app/environment';
+	import Button from '../components/Button.svelte';
+	import Input from '../components/Input.svelte';
+	import { writable } from 'svelte/store';
 
 	let timerInterval: number | undefined = undefined;
 
 	function updatePoints() {
 		if (browser) {
-			localStorage.setItem("data", JSON.stringify($points));
+			localStorage.setItem('data', JSON.stringify($points));
 		}
 	}
 
@@ -36,13 +39,13 @@
 
 	function spin() {
 		$points.spin = !$points.spin;
-		updatePoints()
+		updatePoints();
 	}
 
 	function newBidding() {
 		$points.team_one_bidding = 5;
 		$points.team_two_bidding = 5;
-		updatePoints()
+		updatePoints();
 	}
 
 	function startTimer() {
@@ -69,15 +72,15 @@
 	}
 </script>
 
-<div class="p-6 bg-gray-100 max-w-md mx-auto rounded-lg shadow-md">
+<div class="mx-auto max-w-md rounded-lg bg-gray-100 p-6 shadow-md">
 	<div class="space-y-4">
-		<h2 class="text-xl font-bold text-center">Grupa 1</h2>
+		<h2 class="text-center text-xl font-bold">Grupa 1</h2>
 		<div class="flex space-x-2">
 			<input type="number" bind:value={$points.team_one_points} on:input={updatePoints} class="w-1/2 p-2 border border-gray-300 rounded-md"/>
 			<input type="number" bind:value={$points.team_one_bidding} on:input={updatePoints} class="w-1/2 p-2 border border-gray-300 rounded-md"/>
 		</div>
 
-		<h2 class="text-xl font-bold text-center">Grupa 2</h2>
+		<h2 class="text-center text-xl font-bold">Grupa 2</h2>
 		<div class="flex space-x-2">
 			<input type="number" bind:value={$points.team_two_points} on:input={updatePoints} class="w-1/2 p-2 border border-gray-300 rounded-md"/>
 			<input type="number" bind:value={$points.team_two_bidding} on:input={updatePoints} class="w-1/2 p-2 border border-gray-300 rounded-md"/>
@@ -86,18 +89,21 @@
 		<h2 class="text-xl font-bold text-center">Z poprzedniej rundy</h2>
 		<input type="number" bind:value={$points.stakes_previous_round} on:input={updatePoints} class="w-full p-2 border border-gray-300 rounded-md"/>
 
-		<div class="text-lg font-semibold mt-4 text-center">
-			Pula: <span>{($points.stakes_previous_round + $points.team_one_bidding + $points.team_two_bidding) * 100}</span>
+		<div class="mt-4 text-center text-lg font-semibold">
+			Pula: <span
+				>{($points.stakes_previous_round + $points.team_one_bidding + $points.team_two_bidding) *
+					100}</span
+			>
 		</div>
 	</div>
 
-	<div class="flex flex-col space-y-2 mt-6">
-		<button on:click={lose} class="w-full py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Źle odpowiedzieli</button>
-		<button on:click={teamOneWon} class="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Drużyna 1 wygrała</button>
-		<button on:click={teamTwoWon} class="w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-600">Drużyna 2 wygrała</button>
-		<button on:click={spin} class="w-full py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">Zakręć</button>
-		<button on:click={newBidding} class="w-full py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600">Nowa obstawianie</button>
-		<button on:click={startTimer} class="w-full py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600">Rozpocznij timer</button>
-		<button on:click={clearTimer} class="w-full py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Wyczyść timer</button>
+	<div class="mt-6 flex flex-col space-y-2">
+		<Button onClick={lose} color="bg-red-500" text="Złe odpowiedzi" />
+		<Button onClick={teamOneWon} color="bg-blue-500" text="Drużyna 1 wygrała" />
+		<Button onClick={teamTwoWon} color="bg-green-500" text="Drużyna 2 wygrała" />
+		<Button onClick={spin} color="bg-yellow-500" text="Zakręć" />
+		<Button onClick={newBidding} color="bg-purple-500" text="Nowe obstawianie" />
+		<Button onClick={startTimer} color="bg-orange-500" text="Rozpocznij timer" />
+		<Button onClick={clearTimer} color="bg-gray-500" text="Wyczyść timer" />
 	</div>
 </div>

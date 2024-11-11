@@ -6,7 +6,7 @@
 		{ color: '#f82', label: 'Miejsca' },
 		{ color: '#0bf', label: 'Daty' },
 		{ color: '#fb0', label: 'Muzyka' },
-		{ color: '#0fb', label: 'Postacie' },
+		{ color: '#0fb', label: 'Postacie' }
 	];
 
 	const rand = (m, M) => Math.random() * (M - m) + m;
@@ -88,54 +88,56 @@
 	}
 </script>
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    #wheelOfFortune {
-        display: inline-block;
-        position: relative;
-        overflow: hidden;
-    }
-
-    canvas {
-        display: block;
-    }
-
-    #spin {
-        font: 1.5em/0 sans-serif;
-        user-select: none;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 20%;
-        height: 20%;
-        margin: -10%;
-        background: #fff;
-        color: #fff;
-        box-shadow: 0 0 0 8px currentColor, 0 0 15px 5px rgba(0, 0, 0, 0.6);
-        border-radius: 50%;
-        transition: 0.1s;
-    }
-
-    #spin::after {
-        content: '';
-        position: absolute;
-        top: -17px;
-        border: 10px solid transparent;
-        border-bottom-color: currentColor;
-        border-top: none;
-    }
-</style>
-
 <div id="wheelOfFortune">
 	<canvas bind:this={canvasEl} width="300" height="300"></canvas>
 	<div bind:this={spinEl} id="spin"></div>
 </div>
+
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	#wheelOfFortune {
+		display: inline-block;
+		position: relative;
+		overflow: hidden;
+	}
+
+	canvas {
+		display: block;
+	}
+
+	#spin {
+		font: 1.5em/0 sans-serif;
+		user-select: none;
+		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 20%;
+		height: 20%;
+		margin: -10%;
+		background: #fff;
+		color: #fff;
+		box-shadow:
+			0 0 0 8px currentColor,
+			0 0 15px 5px rgba(0, 0, 0, 0.6);
+		border-radius: 50%;
+		transition: 0.1s;
+	}
+
+	#spin::after {
+		content: '';
+		position: absolute;
+		top: -17px;
+		border: 10px solid transparent;
+		border-bottom-color: currentColor;
+		border-top: none;
+	}
+</style>
