@@ -2,8 +2,6 @@
 	import { points } from '../stores/points';
 	import { browser } from '$app/environment';
 	import Button from '../components/Button.svelte';
-	import Input from '../components/Input.svelte';
-	import { writable } from 'svelte/store';
 
 	let timerInterval: number | undefined = undefined;
 
@@ -76,18 +74,43 @@
 	<div class="space-y-4">
 		<h2 class="text-center text-xl font-bold">Grupa 1</h2>
 		<div class="flex space-x-2">
-			<input type="number" bind:value={$points.team_one_points} on:input={updatePoints} class="w-1/2 p-2 border border-gray-300 rounded-md"/>
-			<input type="number" bind:value={$points.team_one_bidding} on:input={updatePoints} class="w-1/2 p-2 border border-gray-300 rounded-md"/>
+			<input
+				type="number"
+				bind:value={$points.team_one_points}
+				on:input={updatePoints}
+				class="w-1/2 rounded-md border border-gray-300 p-2"
+			/>
+			<input
+				type="number"
+				bind:value={$points.team_one_bidding}
+				on:input={updatePoints}
+				class="w-1/2 rounded-md border border-gray-300 p-2"
+			/>
 		</div>
 
 		<h2 class="text-center text-xl font-bold">Grupa 2</h2>
 		<div class="flex space-x-2">
-			<input type="number" bind:value={$points.team_two_points} on:input={updatePoints} class="w-1/2 p-2 border border-gray-300 rounded-md"/>
-			<input type="number" bind:value={$points.team_two_bidding} on:input={updatePoints} class="w-1/2 p-2 border border-gray-300 rounded-md"/>
+			<input
+				type="number"
+				bind:value={$points.team_two_points}
+				on:input={updatePoints}
+				class="w-1/2 rounded-md border border-gray-300 p-2"
+			/>
+			<input
+				type="number"
+				bind:value={$points.team_two_bidding}
+				on:input={updatePoints}
+				class="w-1/2 rounded-md border border-gray-300 p-2"
+			/>
 		</div>
 
-		<h2 class="text-xl font-bold text-center">Z poprzedniej rundy</h2>
-		<input type="number" bind:value={$points.stakes_previous_round} on:input={updatePoints} class="w-full p-2 border border-gray-300 rounded-md"/>
+		<h2 class="text-center text-xl font-bold">Z poprzedniej rundy</h2>
+		<input
+			type="number"
+			bind:value={$points.stakes_previous_round}
+			on:input={updatePoints}
+			class="w-full rounded-md border border-gray-300 p-2"
+		/>
 
 		<div class="mt-4 text-center text-lg font-semibold">
 			Pula: <span

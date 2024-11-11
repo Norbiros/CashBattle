@@ -4,7 +4,7 @@
 	export let teamTwoValue: string;
 </script>
 
-<tr class="bg-gray-800 border-b border-gray-700">
+<tr class="border-b border-gray-700 bg-gray-800">
 	<td class="px-4 py-3 font-medium">{label}</td>
 	<td class="px-4 py-3 text-teal-400">{teamOneValue}</td>
 	<td class="px-4 py-3 text-yellow-400">{teamTwoValue}</td>
